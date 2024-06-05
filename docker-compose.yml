@@ -1,12 +1,19 @@
 version: '3.4'
 
 services:
-  client:
-    image: client
+  backend1113:
+    image: backend1113
     build:
-      context: client
+      context: .
       dockerfile: ./Dockerfile
     environment:
       NODE_ENV: production
     ports:
-      - 1113:1113
+      - 3113:3113
+  mongodb:
+    image: mongo:latest  # Replace with a specific version if needed
+    volumes:
+      - mongo-data:/data/db  # Persist data volume
+
+volumes:
+  mongo-data:  # Define the volume
