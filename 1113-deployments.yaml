@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+      - name: backend
+        image: umarihsan/backend:latest  # Replace with your image name
+        ports:
+        - containerPort: 3113  # Replace with your port
+        env:
+        - name: MONGO_URI  # Optional: Set environment variable for MongoDB connection string
+          value: "mongodb://mongo-service:27017/your_database_name"  # Update connection string
+       containers:
+      - name: frontend
+        image: umarihsan/frontend:latest  # Replace with your image name
+        ports:
+        - containerPort: 1113  # Replace with your port
