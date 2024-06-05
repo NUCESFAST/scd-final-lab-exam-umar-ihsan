@@ -1,14 +1,14 @@
 version: '3.4'
 
 services:
-  client:
-    image: client
+  backend1113:
+    image: backend1113
     build:
-      context: client
+      context: .
       dockerfile: ./Dockerfile
     environment:
       NODE_ENV: development
     ports:
-      - 1113:1113
+      - 3113:3113
       - 9229:9229
     command: ["node", "--inspect=0.0.0.0:9229", "index.js"]
